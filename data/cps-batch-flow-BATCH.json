@@ -1,0 +1,318 @@
+[
+  {
+    "batch": ">000",
+    "next": [">005"],
+    "comment": "Configuration",
+    "run": ["BATCH"],
+    "db": ["??"],
+    "desc": "Read CPPF"
+  },
+  {
+    "batch": ">010 ",
+    "next": [
+      ">S015",
+      ">AECS015"
+    ],
+    "comment": "Selection by CPT types",
+    "run": ["BATCH"],
+    "db": ["SPDB"],
+    "desc": "Read CPT Triggers"
+  },
+  {
+    "batch": ">S015 ",
+    "next": [
+      ">SR020",
+      ">HC020"
+    ],
+    "comment": "Only Type: 1, 2, 3",
+    "run": ["BATCH"],
+    "db": ["SPDB"],
+    "desc": "Add SR details to CPT"
+  },
+  {
+    "batch": ">SR020 ",
+    "next": [">SR030"],
+    "run": ["BATCH"],
+    "db": ["SPDB"],
+    "desc": "Obtain Cited Docs from SDMS"
+  },
+  {
+    "batch": ">SR030 ",
+    "next": [">SR040"],
+    "run": ["BATCH"],
+    "db": ["MOSES"],
+    "desc": "Check Cited Docs are in MOSES"
+  },
+  {
+    "batch": ">SR040 ",
+    "next": [
+      ">SR050",
+      ">SR060"
+    ],
+    "comment": "Why ??",
+    "run": ["BATCH"],
+    "db": ["SIGNALS"],
+    "desc": "Make Signal 'Doc not on MOSES'"
+  },
+  {
+    "batch": ">SR050 ",
+    "next": [">SR060"],
+    "run": ["BATCH"],
+    "db": ["??"],
+    "desc": "Make Scan Request for Doc not in Moses"
+  },
+  {
+    "batch": ">SR060 ",
+    "next": [
+      ">SR070",
+      ">SR080"
+    ],
+    "comment": "Selection criteria for forking",
+    "run": ["BATCH"],
+    "db": ["DMS"],
+    "desc": "Check if required Docs in Phoenix"
+  },
+  {
+    "batch": ">SR070 ",
+    "next": [">SR080"],
+    "run": ["BATCH"],
+    "db": ["SIGNALS"],
+    "desc": "Make Signal 'Doc not on Phoenix'"
+  },
+  {
+    "batch": ">SR080 ",
+    "next": [">SR090"],
+    "comment": "Missing forms from SPDB",
+    "run": ["BATCH"],
+    "desc": "Check other 'Blocking' factors"
+  },
+  {
+    "batch": ">SR090 ",
+    "next": [">SR100"],
+    "comment": "Missing in latest",
+    "run": ["BATCH"],
+    "db": ["SIGNALS"],
+    "desc": "Make Signal 'Blocking' or 'Warning'"
+  },
+  {
+    "batch": ">SR100 ",
+    "next": [">SR110"],
+    "run": ["BATCH"],
+    "db": ["SPDB"],
+    "desc": "Write CPS triggers back for next batch for the blocking factors"
+  },
+  {
+    "batch": ">SR110 ",
+    "next": [">SR120"],
+    "comment": "CPPF: Print After ENDS, no ENDS exists",
+    "run": ["BATCH"],
+    "db": [
+      "EPASYS,",
+      "ADM"
+    ],
+    "desc": "Send ENDS or DREP to EPASYS or ADM"
+  },
+  {
+    "batch": ">SR120 ",
+    "next": [">SR130"],
+    "run": ["BATCH"],
+    "db": ["SPDB"],
+    "desc": "Write CPS Triggers to run after EPASYS/ADM Batch"
+  },
+  {
+    "batch": ">SR130 ",
+    "next": [">SR140"],
+    "run": ["BATCH"],
+    "db": [
+      "EPASYS,",
+      "ADM"
+    ],
+    "desc": "EPASYS/ADM Batch"
+  },
+  {
+    "batch": ">SR140 ",
+    "next": [">SR140-SR020"],
+    "comment": "Secord Run ->  re-read CPT",
+    "run": ["BATCH"],
+    "db": ["SPDB"],
+    "desc": "Redo S020 - S0120"
+  },
+  {
+    "batch": ">SR140-SR020 ",
+    "next": [">SR140-SR030"],
+    "run": ["BATCH"],
+    "db": ["SPDB"],
+    "desc": "Obtain Cited Docs from SDMS"
+  },
+  {
+    "batch": ">SR140-SR030 ",
+    "next": [">SR140-SR040"],
+    "run": ["BATCH"],
+    "db": ["MOSES"],
+    "desc": "Check Cited Docs are in MOSES"
+  },
+  {
+    "batch": ">SR140-SR040 ",
+    "next": [">SR140-SR050"],
+    "run": ["BATCH"],
+    "desc": "Make Signal 'Doc not on MOSES'"
+  },
+  {
+    "batch": ">SR140-SR050 ",
+    "next": [">SR140-SR060"],
+    "run": ["BATCH"],
+    "db": ["??"],
+    "desc": "Make Scan Request for Doc not in Moses"
+  },
+  {
+    "batch": ">SR140-SR060 ",
+    "next": [">SR140-SR070"],
+    "run": ["BATCH"],
+    "db": ["DMS"],
+    "desc": "Check if required Docs in Phoenix"
+  },
+  {
+    "batch": ">SR140-SR070 ",
+    "next": [">SR140-SR080"],
+    "run": ["BATCH"],
+    "db": ["SIGNALS"],
+    "desc": "Make Signal 'Doc not on Phoenix'"
+  },
+  {
+    "batch": ">SR140-SR080 ",
+    "next": [">SR140-SR090"],
+    "run": ["BATCH"],
+    "desc": "Check other 'Blocking' factors"
+  },
+  {
+    "batch": ">SR140-SR090 ",
+    "next": [">SR140-SR100"],
+    "run": ["BATCH"],
+    "db": ["SIGNALS"],
+    "desc": "Make Signal 'Blocking' or 'Warning'"
+  },
+  {
+    "batch": ">SR140-SR100 ",
+    "next": [">SR140-SR110"],
+    "run": ["BATCH"],
+    "db": ["SPDB"],
+    "desc": "Write CPS triggers back for next batch for the blocking factors"
+  },
+  {
+    "batch": ">SR140-SR110 ",
+    "next": [">SR140-SR120"],
+    "run": ["BATCH"],
+    "db": [
+      "EPASYS,",
+      "ADM"
+    ],
+    "desc": "Send ENDS or DREP to EPASYS or ADM"
+  },
+  {
+    "batch": ">SR140-SR120 ",
+    "next": [
+      ">SR150",
+      ">SR160",
+      ">SO160",
+      ">SR185",
+      ">SR200"
+    ],
+    "run": ["BATCH"],
+    "desc": "Write CPS Triggers to run after EPASYS/ADM Batch"
+  },
+  {
+    "batch": ">SR150 ",
+    "comment": "END of Processing?",
+    "run": ["BATCH"],
+    "db": ["SPDB,SIGNALS"],
+    "desc": "Check for potential missing CPS triggers & Report"
+  },
+  {
+    "batch": ">SR160 ",
+    "next": [
+      ">SR170",
+      ">SR180"
+    ],
+    "comment": "CPP2 and CPP3",
+    "run": ["BATCH"],
+    "desc": "Determine Package based on CPPP"
+  },
+  {
+    "batch": ">SR170 ",
+    "comment": "END of Processing?",
+    "run": ["BATCH"],
+    "db": ["SPDB"],
+    "desc": "Get AFP from SPDB"
+  },
+  {
+    "batch": ">SR180 ",
+    "next": [
+      ">SR195",
+      ">SR075"
+    ],
+    "run": ["BATCH"],
+    "desc": "Make BNS/PHX Print control file"
+  },
+  {
+    "batch": ">SR075 ",
+    "next": [">SR190"],
+    "run": ["BATCH"],
+    "desc": "Make Full text signal of signal number"
+  },
+  {
+    "batch": ">SR190 ",
+    "next": [
+      ">SR210",
+      ">SR220",
+      ">SR230"
+    ],
+    "run": ["BATCH"],
+    "desc": "Group Signals per FO"
+  },
+  {
+    "batch": ">SR210 ",
+    "run": ["BATCH"],
+    "db": ["epoMail"],
+    "desc": "Send Mail with all signaml to specail staff"
+  },
+  {
+    "batch": ">SR220 ",
+    "next": [
+      ">SR230",
+      ">SR240"
+    ],
+    "run": ["BATCH"],
+    "db": ["epoMail"],
+    "desc": "Send Mail with signals of double print to Dig.team"
+  },
+  {
+    "batch": ">SR230 ",
+    "next": [">SR240"],
+    "comment": "How do you know the mailbox??",
+    "run": ["BATCH"],
+    "db": ["epoMail"],
+    "desc": "Split Signals in mail per SES/Mbx/FO"
+  },
+  {
+    "batch": ">SR240 ",
+    "next": [
+      ">SR250",
+      ">SR260"
+    ],
+    "comment": "Where stored??",
+    "run": ["BATCH"],
+    "db": ["epoMail"],
+    "desc": "Send mail per SES-Mailbox/FO"
+  },
+  {
+    "batch": ">SR250 ",
+    "comment": "Queue",
+    "run": ["BATCH"],
+    "desc": "Make+Send mail for Dossier waiting to long with Signals"
+  },
+  {
+    "batch": ">SR260 ",
+    "run": ["BATCH"],
+    "desc": "Extract and send SR structed data for FA to INPI"
+  }
+]

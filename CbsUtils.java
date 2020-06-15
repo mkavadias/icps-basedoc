@@ -1,4 +1,4 @@
-package mk.synset.utils;
+package mk.utils;
 
 import java.io.BufferedReader;
 import java.io.File;
