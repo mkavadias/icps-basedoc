@@ -39,9 +39,11 @@ public class GenDoc_Dot { // extends PF_V5_Utils {
     // DOT specific parameters.
     // -------------------------------------------------------------
 
-    final Map<String, String> subgraphs = new HashMap<String, String>();
+    private final Map<String, String> subgraphs = new HashMap<String, String>();
     final Map<String, String> catgraphs = new HashMap<String, String>();
+    private final Set<String> procedure = new HashSet<>();
 
+    
     /**
      * Used for stand alone generation.
      * 
@@ -145,6 +147,7 @@ public class GenDoc_Dot { // extends PF_V5_Utils {
                     if (proc.equalsIgnoreCase(run)) {
                         JSONObject result = new JSONObject(json, TO_PROC);
                         rc.put(result);
+                        procedure.add(result.getString(H_BATCH).trim());
                     }
                 }
             }
@@ -224,6 +227,9 @@ public class GenDoc_Dot { // extends PF_V5_Utils {
 //            ss += T1 + name + " -> " + child + ";";
             ss += T1 + name + " -> " + getDisplayName(child) + ";";
             ss += newline;
+            if (!procedure.contains(child.trim()) ) {
+                ss += T1 + getDisplayName(child) + " [style=filled, fillcolor=azure2];" + newline;
+            }
         }
         subgraphs.put(proc, ss);
         return result;

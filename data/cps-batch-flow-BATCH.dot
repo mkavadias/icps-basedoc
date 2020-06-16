@@ -10,8 +10,10 @@ digraph BATCH
         005 -> 010;
         010 -> S015;
         010 -> AECS015;
+        AECS015 [style=filled, fillcolor=azure2];
         S015 -> SR020;
         S015 -> HC020;
+        HC020 [style=filled, fillcolor=azure2];
         SR020 -> SR030;
         SR030 -> SR040;
         SR040 -> SR050;
@@ -40,11 +42,15 @@ digraph BATCH
         SR140_SR120 -> SR150;
         SR140_SR120 -> SR160;
         SR140_SR120 -> SO160;
+        SO160 [style=filled, fillcolor=azure2];
         SR140_SR120 -> SR185;
+        SR185 [style=filled, fillcolor=azure2];
         SR140_SR120 -> SR200;
+        SR200 [style=filled, fillcolor=azure2];
         SR160 -> SR170;
         SR160 -> SR180;
         SR180 -> SR195;
+        SR195 [style=filled, fillcolor=azure2];
         SR180 -> SR075;
         SR075 -> SR190;
         SR190 -> SR210;
