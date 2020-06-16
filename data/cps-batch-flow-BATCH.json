@@ -8,6 +8,13 @@
     "desc": "Read CPPF"
   },
   {
+    "batch": ">005 ",
+    "next": [">010"],
+    "run": ["BATCH"],
+    "db": ["SPDD"],
+    "desc": "Make fake CPT triggers for non AECS actions"
+  },
+  {
     "batch": ">010 ",
     "next": [
       ">S015",

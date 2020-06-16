@@ -1,12 +1,13 @@
 digraph BATCH 
 {
-    size = "9,12";
+    size = "30,40";
     overlap = false;
     sep = "+20.0";
     node [shape = box];
     subgraph cluster_BATCH {
         label = "BATCH";
         000 -> 005;
+        005 -> 010;
         010 -> S015;
         010 -> AECS015;
         S015 -> SR020;
@@ -55,6 +56,7 @@ digraph BATCH
         SR240 -> SR250;
         SR240 -> SR260;
     }
+
 
 
 

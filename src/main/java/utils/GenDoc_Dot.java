@@ -28,13 +28,13 @@ public class GenDoc_Dot { // extends PF_V5_Utils {
     // DOT specific parameters.
     // -------------------------------------------------------------
 
-    final int COMM_LEN = 80;
+    private final int COMM_LEN = 80;
 
-    final float GREY0 = 1.f;
+    private final float GREY0 = 1.f;
 
-    final float GREY1 = 0.92f;
+    private final float GREY1 = 0.92f;
 
-    final float GREY3 = 0.8f;
+    private final float GREY3 = 0.8f;
     // -------------------------------------------------------------
     // DOT specific parameters.
     // -------------------------------------------------------------
@@ -172,7 +172,7 @@ public class GenDoc_Dot { // extends PF_V5_Utils {
         String result = "";
         result += "digraph " + proc + " " + newline;
         result += "{" + newline;
-        result += T0 + "size = \"9,12\";" + newline;
+        result += T0 + "size = \"30,40\";" + newline;
         result += T0 + "overlap = false;" + newline; // MK 2019 no overlap
         result += T0 + "sep = \"+20.0\";" + newline; // MK 2019 no overlap
         result += T0 + "node [shape = box];" + newline;
@@ -269,10 +269,10 @@ public class GenDoc_Dot { // extends PF_V5_Utils {
 
     private String neato(String proc) {
         File file = new File(GEN_DIR, getFileStem(proc, ".dot"));
-        File out = new File(GEN_DIR, getFileStem(proc, "-tw.png"));
+        File out = new File(GEN_DIR, getFileStem(proc, ".png"));
         System.out.println(file.getAbsolutePath());
         System.out.println(out.getAbsolutePath());
-        return "/usr/local/bin/twopi -Tpng " + file.getAbsolutePath() + " -o " + out.getAbsolutePath();
+        return "/usr/local/bin/dot -Tpng " + file.getAbsolutePath() + " -o " + out.getAbsolutePath();
         // return "/usr/local/bin/neato -Tpng " + file.getAbsolutePath() + " -o " +
         // out.getAbsolutePath();
 
@@ -285,9 +285,9 @@ public class GenDoc_Dot { // extends PF_V5_Utils {
         File out = new File(GEN_DIR, getFileStem(proc, ".png"));
         System.out.println(file.getAbsolutePath());
         System.out.println(out.getAbsolutePath());
-        return "\"c:\\Program Files (x86)\\Graphviz2.38\\bin\\sfdp.exe\" -Tpng " + file.getAbsolutePath() + " -o "
-                + out.getAbsolutePath();
-//        return "\"c:\\Program Files (x86)\\Graphviz2.38\\bin\\neato.exe\" -Tpng " + file.getAbsolutePath() + " -o " + out.getAbsolutePath();
+//        return "\"c:\\Program Files (x86)\\Graphviz2.38\\bin\\sfdp.exe\" -Tpng " + file.getAbsolutePath() + " -o "
+//                + out.getAbsolutePath();
+        return "\"c:\\Program Files (x86)\\Graphviz2.38\\bin\\neato.exe\" -Tpng " + file.getAbsolutePath() + " -o " + out.getAbsolutePath();
         // return "neato -Tpng " + gen_DIR+"/"+getFileStem(".dot") + "-o " +
         // gen_DIR+"/"+getFileStem(".png");
     }
