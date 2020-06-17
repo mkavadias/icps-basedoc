@@ -83,6 +83,7 @@ public class GenDoc_Dot { // extends PF_V5_Utils {
 
         // 2. complete structure,
         JSONArray struct = completeStructure(rawData);
+        printToFile(getFileStem("ALL", ".json"),struct.toString(2));
 
         // 3. filter procedure
         JSONArray batch = filter(struct, proc);
